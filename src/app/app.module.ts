@@ -19,8 +19,7 @@ import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
 import { MultiSelectModule } from "primeng/multiselect";
 import { AutoCompleteModule } from "primeng/autocomplete";
-import { DateformatPipe } from './pipes/dateformat.pipe';
-
+import { MyCustomePipePipe } from './pipes/my-custome-pipe.pipe';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -38,7 +37,7 @@ import { DateformatPipe } from './pipes/dateformat.pipe';
     AutoCompleteModule,
     ToastrModule.forRoot(),
   ],
-  declarations: [AppComponent, AdminLayoutComponent, InvoiceComponent, DateformatPipe],
+  declarations: [AppComponent, AdminLayoutComponent, InvoiceComponent, MyCustomePipePipe],
   providers: [],
   bootstrap: [AppComponent],
 })

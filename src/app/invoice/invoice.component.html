@@ -57,7 +57,7 @@
               <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr>
                   <td *ngFor="let col of columns">
-                    {{ rowData[col.field] |dateformat}}
+                    <div [innerHtml]="rowData[col.field] | myCustomePipe "></div>
                   </td>
                 </tr>
               </ng-template>

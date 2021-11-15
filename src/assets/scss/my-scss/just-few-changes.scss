@@ -75,3 +75,28 @@ table.p-datatable-table {
     justify-content: space-between;
   }
 }
+
+.pi-circle-fill:before .upState {
+  color: green;
+}
+.pi-circle-fill:before .downState {
+  color: red;
+}
+.pi-circle-fill:before .halfState {
+  color: yellow;
+}
+
+@media only screen and (max-width: 767px) {
+  .available-title-bg {
+    font-size: 24px;
+  }
+}
+
+.p-element.p-button-outlined.p-button.p-component,
+.p-inputtext.p-component.p-element {
+  border-radius: 24px;
+}
+
+table.p-datatable-table > tbody > tr > td >div{
+  text-align: center;
+}

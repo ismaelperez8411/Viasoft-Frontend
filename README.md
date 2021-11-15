@@ -17,11 +17,12 @@ style="margin:10px"
 - se desactivaron varios componentes que no necesitaban
 - se modificó estilos generales de la plantilla
 
-- se modifica el componente dashboard para utilizar el lineChart y mostrar la disponibilidad historica de los servicios por estado o provincia (este cálculo se llevo a % utilizando) 
++ se modifica el componente dashboard para utilizar el lineChart y mostrar la disponibilidad historica de los servicios por estado o provincia (este cálculo se llevo a % utilizando) 
 + models [contiente las interfaces]
 + services [constiene lso servicios para el acceso a datos]
 + invoice [contiene el componente para visualizar el historico de estados de los servicios, realizar busquedas por fecha, ordenar por cualquier columna]
 + pipes [se añade una pipeline para detectar los datos de tipo Datetime y modificar su visualización]
++ se agrega fichero scss en assets/scss/my-scss
 
 ## Instalación
 
@@ -34,7 +35,7 @@ style="margin:10px"
 7. Navigate to [localhost:4200](localhost:4200)
 
 
-a continuacion dejo la documentación original d ela plantilla
+a continuacion dejo la documentación original de la plantilla
 # [Now UI Dashboard Angular](https://creativetimofficial.github.io/now-ui-dashboard-angular) [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
 ![alt text](https://s3.amazonaws.com/creativetim_bucket/products/85/original/opt_nud_angular_thumbnail.jpg)

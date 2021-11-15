@@ -22,10 +22,10 @@ export interface StateAvailable {
   autorizador?: string;
   autorizacion?: number;
   autorizacionDevolucion?: number;
-  consultaProtocolo?: number;
-  consultaRegistro?: number;
   discapacidad?: number;
+  consultaProtocolo?: number;
   estadoServicio?: number;
+  consultaRegistro?: number;
   recepcionEventos?: number;
   disponibilidadServicio?: number;
 }
@@ -35,12 +35,12 @@ export interface CurrentSates{
     histId?: number,
     autorizador?: string;
     autorizacion?: string;
+    discapacidad?: string;
     autorizacionDevolucion?: string;
     consultaProtocolo?: string;
-    consultaRegistro?: string;
-    discapacidad?: string;
     estadoServicio?: string;
-    datetime?: string;
     tiempoMedio?: string;
+    consultaRegistro?: string;
+    datetime?: string;
     recepcionEventos?: string;
 }

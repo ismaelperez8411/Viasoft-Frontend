@@ -17,6 +17,7 @@ import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from "primeng/button";
 import { InputTextModule } from 'primeng/inputtext';
+import { MySecondPipePipe } from '../../pipes/my-second-pipe.pipe';
 //import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { InputTextModule } from 'primeng/inputtext';
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,
+    MySecondPipePipe
     //UpgradeComponent,
     //TypographyComponent,
     //IconsComponent,

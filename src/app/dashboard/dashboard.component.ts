@@ -3,8 +3,9 @@ import * as Chartist from "chartist";
 import { AvilablilityService } from "../services/avilablility.service";
 import { CurrentSates, StateAvailable } from "../models/invoice";
 import { CurrentsService } from "../services/currents.service";
-import { LazyLoadEvent } from "primeng/api";
+import { LazyLoadEvent, SortEvent } from "primeng/api";
 import { Table } from "primeng/table";
+import { Observable, Subscription, timer } from "rxjs";
 
 @Component({
   selector: "app-dashboard",
@@ -45,11 +46,10 @@ export class DashboardComponent implements OnInit {
   public lineChartGradientsNumbersColors: Array<any>;
   // events
   public chartClicked(e: any): void {
-    console.log(e);
+    //console.log(e);
   }
-
   public chartHovered(e: any): void {
-    console.log(e);
+    //console.log(e);
   }
   public hexToRGB(hex, alpha) {
     var r = parseInt(hex.slice(1, 3), 16),
@@ -76,15 +76,16 @@ export class DashboardComponent implements OnInit {
   currentTime: string;
   loadCurrentStates(event: LazyLoadEvent) {
     this.loading = true;
-    console.log("lazy", event);
+    //console.log("lazy", event);
     let filt = {};
-    if (event.globalFilter !== null) {
+    if ("globalFilter" in event && event.globalFilter !== null) {
       filt["aut"] = event.globalFilter;
     }
-
     // lamando al servicio para obtener los estados actuales de los servicios
     this.currentStatesService.getCurrentStates(filt).then((res) => {
-      this.currentStates = res;
+      this.currentStates = res.sort(function (a, b) {
+        return a.invId - b.invId;
+      });
       this.currentTime = this.currentStates[0].datetime;
       this.loading = false;
     });
@@ -197,7 +198,15 @@ export class DashboardComponent implements OnInit {
   clear(table: Table) {
     table.clear();
   }
+
+  subscription: Subscription;
+  everyFiveSeconds: Observable<number> = timer(0, 30000);
+
   ngOnInit() {
+    this.subscription = this.everyFiveSeconds.subscribe(() => {
+      this.loadCurrentStates({});
+    });
+
     this.loading = true;
 
     this.cols = [
@@ -205,12 +214,12 @@ export class DashboardComponent implements OnInit {
       { field: "autorizador", header: "Estado|Provincia" },
       { field: "autorizacion", header: "Autorización" },
       { field: "autorizacionDevolucion", header: "Autorización Devolucion" },
-      { field: "consultaProtocolo", header: "Consulta Protocolo" },
-      { field: "consultaRegistro", header: "Consulta Registro" },
       { field: "discapacidad", header: "Discapacidad" },
+      { field: "consultaProtocolo", header: "Consulta Protocolo" },
       { field: "estadoServicio", header: "Estado Servicio" },
-      { field: "recepcionEventos", header: "Recepcion Eventos" },
       { field: "tiempoMedio", header: "Tiempo Medio" },
+      { field: "consultaRegistro", header: "Consulta Registro" },
+      { field: "recepcionEventos", header: "Recepcion Eventos" },
       //{ field: "datetime", header: "Datetime" },
     ];
 
@@ -527,5 +536,8 @@ export class DashboardComponent implements OnInit {
     };
 
     this.lineChartGradientsNumbersType = "bar";
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
